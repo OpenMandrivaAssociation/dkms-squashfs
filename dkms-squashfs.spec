@@ -12,6 +12,7 @@ Source0: %{module}%{version}.tgz
 Patch0: squashfs3.3-2618.patch
 License: GPL
 Group: System/Kernel and hardware
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: http://squashfs.sourceforge.net/
 BuildArch: noarch
 Requires(post): dkms
