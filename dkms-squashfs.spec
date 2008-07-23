@@ -2,7 +2,7 @@
 %define name dkms-%{module}
 %define version 3.3
 %define kver 2.6.23
-%define release %mkrel 2
+%define release %mkrel 4
 
 Summary: Squashfs compressed read-only filesystem
 Name: %{name}
