@@ -1,15 +1,14 @@
 %define module squashfs
 %define name dkms-%{module}
-%define version 3.3
-%define kver 2.6.23
-%define release %mkrel 4
+%define version 3.4
+%define kver 2.6.27-rc4-next
+%define release %mkrel 1
 
 Summary: Squashfs compressed read-only filesystem
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{module}%{version}.tgz
-Patch0: squashfs3.3-2618.patch
+Source0: %{module}%{version}.tar.gz
 License: GPL
 Group: System/Kernel and hardware
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -28,7 +27,6 @@ pushd dkms
 patch -t < ../kernel-patches/linux-%{kver}/%{module}%{version}-patch || [ -f %{module}.h ]
 perl -pi -e 's,^#include <linux/(%{module}.*\.h)>$,#include "$1",' *.{c,h}
 popd
-%patch0 -p1 -b .2618
 
 cat > dkms/dkms.conf <<EOF
 PACKAGE_NAME=%{name}
