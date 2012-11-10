@@ -1,0 +1,28 @@
+Change squashfs name, so we can use dkms-squashfs with newer kernels which
+have squashfs 4 to mount squashfs 3 images.
+
+diff -p -up squashfs3.4/dkms/inode.c.orig squashfs3.4/dkms/inode.c
+--- squashfs3.4/dkms/inode.c.orig	2011-01-13 08:49:51.520897242 -0200
++++ squashfs3.4/dkms/inode.c	2011-01-13 08:51:50.945511293 -0200
+@@ -62,7 +62,7 @@ static void destroy_inodecache(void);
+ 
+ static struct file_system_type squashfs_fs_type = {
+ 	.owner = THIS_MODULE,
+-	.name = "squashfs",
++	.name = "squashfs3",
+ 	.get_sb = squashfs_get_sb,
+ 	.kill_sb = kill_block_super,
+ 	.fs_flags = FS_REQUIRES_DEV
+diff -p -up squashfs3.4/dkms/Makefile.orig squashfs3.4/dkms/Makefile
+--- squashfs3.4/dkms/Makefile.orig	2011-01-13 09:06:29.343580806 -0200
++++ squashfs3.4/dkms/Makefile	2011-01-13 09:06:48.933321889 -0200
+@@ -2,6 +2,6 @@
+ # Makefile for the linux squashfs routines.
+ #
+ 
+-obj-$(CONFIG_SQUASHFS) += squashfs.o
+-squashfs-y += inode.o
+-squashfs-y += squashfs2_0.o
++obj-$(CONFIG_SQUASHFS) += squashfs3.o
++squashfs3-y += inode.o
++squashfs3-y += squashfs2_0.o

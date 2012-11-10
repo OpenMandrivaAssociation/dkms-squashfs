@@ -1,0 +1,24 @@
+Newer kernels requires include of slab.h (build fix)
+
+diff -p -up squashfs3.4/dkms/inode.c.orig squashfs3.4/dkms/inode.c
+--- squashfs3.4/dkms/inode.c.orig	2011-01-13 09:24:28.871526093 -0200
++++ squashfs3.4/dkms/inode.c	2011-01-13 09:24:41.946688194 -0200
+@@ -33,6 +33,7 @@
+ #include <linux/spinlock.h>
+ #include <linux/smp_lock.h>
+ #include <linux/exportfs.h>
++#include <linux/slab.h>
+ 
+ #include "squashfs.h"
+ 
+diff -p -up squashfs3.4/dkms/squashfs2_0.c.orig squashfs3.4/dkms/squashfs2_0.c
+--- squashfs3.4/dkms/squashfs2_0.c.orig	2011-01-13 09:25:02.411507055 -0200
++++ squashfs3.4/dkms/squashfs2_0.c	2011-01-13 09:25:17.227823905 -0200
+@@ -25,6 +25,7 @@
+ #include <linux/module.h>
+ #include <linux/zlib.h>
+ #include <linux/fs.h>
++#include <linux/slab.h>
+ #include "squashfs_fs_sb.h"
+ #include "squashfs_fs_i.h"
+ 
