@@ -14,7 +14,7 @@ Patch1: dkms-squashfs-slab-header.patch
 License: GPL
 Group: System/Kernel and hardware
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Url: http://squashfs.sourceforge.net/
+Url: https://squashfs.sourceforge.net/
 BuildArch: noarch
 Requires(post): dkms
 Requires(preun): dkms
